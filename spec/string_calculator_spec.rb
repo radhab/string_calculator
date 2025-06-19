@@ -8,8 +8,12 @@ RSpec.describe StringCalculator do
     #   }.to raise_error(NoMethodError)
     # end
 
-    it 'return 0 when input string is empty' do
+    it 'returns 0 when input string is empty' do
       expect(StringCalculator.add("")).to eq(0) 
+    end
+
+    it 'returns 0 when input string has only spaces' do
+      expect(StringCalculator.add("      ")).to eq(0) 
     end
 
   end

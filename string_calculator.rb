@@ -1,7 +1,7 @@
-class StringCalculator
-	def self.add(input) 
-		return 0 if input.to_s.strip.empty?
-		return input.to_i if input =~ /\A\d+\z/
+module StringParser
+  def self.parse(input)
+    return [] if input.to_s.strip.empty?   # [] instead of 0
+		return [input.to_i]  if input.match?(/\A\d+\z/) # [n] instead of n
 		numbers = if input.start_with?('//')
   		m   = input.match(%r{//(.)\n(.*)})
   		delim   = Regexp.escape(m[1])  		
@@ -9,8 +9,15 @@ class StringCalculator
 		else
 			input.split(/,|\n/)
 	  end
-	  numbers.map(&:to_i).sum
-  end		
+	  numbers
+  end
 end
 
+
+class StringCalculator
+  def self.add(input)
+    tokens = StringParser.parse(input)
+    tokens.map(&:to_i).sum
+  end
+end
 

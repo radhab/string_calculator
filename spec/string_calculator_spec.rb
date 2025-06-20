@@ -40,6 +40,14 @@ RSpec.describe StringCalculator do
       expect(StringCalculator.add("//;\n1;2")).to eq(3)
     end
 
+  
+    it 'raise error if add method is not defined' do  
+      expect { 
+         StringCalculator.add("-1,2")
+       }.to raise_error("Negative Numbers are not allowed")
+    end
+
+
 
 
   end

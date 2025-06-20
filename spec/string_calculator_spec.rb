@@ -43,13 +43,9 @@ RSpec.describe StringCalculator do
   
     it 'raise error if add method is not defined' do  
       expect { 
-         StringCalculator.add("-1,2")
-       }.to raise_error("Negative Numbers are not allowed")
+         StringCalculator.add("1,-2,4,-5")
+       }.to raise_error("negative numbers not allowed: -2, -5")
     end
-
-
-
-
   end
 end
 

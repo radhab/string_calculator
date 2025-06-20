@@ -11,13 +11,22 @@ module StringParser
 	  end
 	  numbers
   end
+
+  def self.check_for_negatives!(numbers)
+    negatives = numbers.select { |n| n < 0 }
+    unless negatives.empty?
+      raise "negative numbers not allowed: #{negatives.join(', ')}"
+    end
+  end
 end
 
 
 class StringCalculator
   def self.add(input)
     tokens = StringParser.parse(input)
-    tokens.map(&:to_i).sum
+    int_tokens = tokens.map(&:to_i)
+    StringParser.check_for_negatives!(int_tokens)
+    int_tokens.sum
   end
 end
 

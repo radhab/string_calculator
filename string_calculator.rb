@@ -1,5 +1,5 @@
 class StringCalculator
 	def self.add(input) 
-		return 0 if input.nil? || input.strip.empty?
+		return 0 if input.to_s.strip.empty?
   end		
 end

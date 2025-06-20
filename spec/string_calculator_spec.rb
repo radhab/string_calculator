@@ -19,6 +19,11 @@ RSpec.describe StringCalculator do
     it 'returns 0 when input string has only spaces' do
       expect(StringCalculator.add("      ")).to eq(0) 
     end
+
+    it 'returns the number for a single input' do
+      expect(StringCalculator.add("1")).to eq(1)
+    end
+
   end
 end
 
